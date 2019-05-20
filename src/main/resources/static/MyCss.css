@@ -25,10 +25,17 @@ a{
 .btn:hover{
     box-shadow: 2px 2px 2px #888888;
 }
+
+.btn-create_new_order{
+    background-color: rgb(55,55,55);
+}
+
 #btn-create{
     margin-bottom: 10px;
-    background-color: green;
+    background-color: rgb(55,55,55);
 }
+
+
 .btn-viewOne{
     background-color: green;
 }
@@ -41,7 +48,9 @@ a{
     background-color: blue;
 }
 
-
+#abe{
+    display:inline;
+}
 
 
 
