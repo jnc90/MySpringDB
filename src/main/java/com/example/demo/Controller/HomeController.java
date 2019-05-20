@@ -24,6 +24,13 @@ public class HomeController {
         model.addAttribute("persons", personList);
         return "home/index";
     }
+    // testing start
+    @GetMapping("/create_new_order/{id}")
+    public String create_new_order(@PathVariable("id") int id, Model model){
+//        model.addAttribute("person", personService.findPersonById(id));
+        return "home/create_new_order";
+    }
+     //testing end
     @GetMapping("/create")
     public String create(){
         return "home/create";
