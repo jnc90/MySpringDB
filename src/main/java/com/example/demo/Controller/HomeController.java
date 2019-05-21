@@ -24,17 +24,39 @@ public class HomeController {
         model.addAttribute("persons", personList);
         return "home/index";
     }
-    // testing start
+
 
     @GetMapping("/create_new_order")
     public String create_new_order(){
         return "home/create_new_order";
     }
-    @GetMapping("/index")
-    public String index(){
-        return "home/index";
+
+    @GetMapping("/dishes")
+    public String dishes(){
+        return "home/dishes";
     }
-     //testing end
+
+    @GetMapping("/inventory")
+    public String inventory(){
+        return "home/inventory";
+    }
+
+    @GetMapping("/vendors")
+    public String vendors(){
+        return "home/vendors";
+    }
+
+    @GetMapping("/product")
+    public String product(){
+        return "home/product";
+    }
+
+     @GetMapping("/balance")
+    public String balance(){
+        return "home/balance";
+    }
+
+// gammelt start
     @GetMapping("/create")
     public String create(){
         return "home/create";
@@ -73,4 +95,5 @@ public class HomeController {
         personService.updatePerson(person.getId(), person);
         return "redirect:/";
     }
+    //gammelt slut
 }
