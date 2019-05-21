@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-//Controller styrer afviklingen af modellen
+//Controller styrer afviklingen af modellen (URL route, redirect og data indsamling)
+//View er HTML filer (HTML, CSS, JavaScript)
+//Model er business logic og persistent logic
+
 @Controller
 public class HomeController {
     @Autowired

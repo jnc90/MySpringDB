@@ -32,10 +32,8 @@ a{
 
 #btn-create{
     margin-bottom: 10px;
-    background-color: rgb(55,55,55);
+    background-color: green;
 }
-
-
 .btn-viewOne{
     background-color: green;
 }
@@ -48,9 +46,7 @@ a{
     background-color: blue;
 }
 
-#abe{
-    display:inline;
-}
+
 
 
 
