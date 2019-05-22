@@ -1,6 +1,7 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Person;
+import com.example.demo.Model.Zip_Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,9 +10,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PersonRepo {
+public class RestaurantRepo {
     @Autowired
     JdbcTemplate template;
+
+
+
+    public List<Zip_Code> fetchAllCodes(){
+        String sql = "SELECT * FROM Zip_Codes";
+        RowMapper<Zip_Code> rowMapper = new BeanPropertyRowMapper<>(Zip_Code.class);
+        return template.query(sql, rowMapper);
+    }
 
     public List<Person> fetchAll(){
         String sql = "SELECT * FROM person";

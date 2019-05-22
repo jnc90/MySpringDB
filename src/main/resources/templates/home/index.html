@@ -43,20 +43,12 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each="person: ${persons}">
-                <td th:text="${person.id}"/>
-                <td th:text="${person.first_name}"/>
-                <td th:text="${person.last_name}"/>
+            <tr th:each="zip_code: ${zip_codes}">
+                <td th:text="${zip_code.zip_code_id}"/>
+                <td th:text="${zip_code.zip_code}"/>
+                <td th:text="${zip_code.city}"/>
                 <td>
-                    <a th:href="@{'/viewOne/'+${person.id}}">
-                        <button class="btn-viewOne btn" id="btn-viewOne">View one</button>
-                    </a>
-                    <a th:href="@{'/delete/'+${person.id}}">
-                        <button class="btn-delete btn" id="btn-delete">Delete</button>
-                    </a>
-                    <a th:href="@{'/update/'+${person.id}}">
-                        <button class="btn-update btn" id="btn-update">Update</button>
-                    </a>
+
                 </td>
             </tr>
         </tbody>
