@@ -14,8 +14,6 @@ public class RestaurantRepo {
     @Autowired
     JdbcTemplate template;
 
-
-
     public List<Zip_Code> fetchAllCodes(){
         String sql = "SELECT * FROM Zip_Codes";
         RowMapper<Zip_Code> rowMapper = new BeanPropertyRowMapper<>(Zip_Code.class);
