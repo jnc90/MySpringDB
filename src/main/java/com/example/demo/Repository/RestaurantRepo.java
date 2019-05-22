@@ -1,6 +1,6 @@
 package com.example.demo.Repository;
 
-import com.example.demo.Model.Person;
+import com.example.demo.Model.Vendor;
 import com.example.demo.Model.Zip_Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -20,6 +20,23 @@ public class RestaurantRepo {
         return template.query(sql, rowMapper);
     }
 
+    public List<Vendor> fetchAll(){
+        String sql = "SELECT * FROM vendors";
+        RowMapper<Vendor> rowMapper = new BeanPropertyRowMapper<>(Vendor.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public Vendor addVendor(Vendor vendor){
+        String sql = "INSERT INTO Vendors (vendor_name, phone, email, address, zip_code_id) " + "VALUES(?, ?, ?, ?, ?)";
+        template.update(sql, vendor.getVendor_name(), vendor.getPhone(),vendor.getEmail(),vendor.getAddress(),vendor.getZip_code_id());
+        return null;
+    }
+
+
+
+
+
+    /*
     public List<Person> fetchAll(){
         String sql = "SELECT * FROM person";
         RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class);
@@ -49,4 +66,5 @@ public class RestaurantRepo {
         template.update(sql, p.getFirst_name(), p.getLast_name(), p.getId());
         return null;
     }
+     */
 }

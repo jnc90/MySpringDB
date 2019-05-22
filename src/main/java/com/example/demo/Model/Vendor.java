@@ -7,22 +7,22 @@ import javax.persistence.Id;
 public class Vendor {
     @Id
     private int vendor_id;
-    private String name;
+    private String vendor_name;
     private String phone;
     private String email;
-    private int zip_code;
-    private String city;
+    private int zip_code_id;
+    private String address;
 
     public Vendor(){
     }
 
-    public Vendor(int vendor_id, String name, String phone, String email, int zip_code, String city){
+    public Vendor(int vendor_id, String vendor_name, String phone, String email, int zip_code, String address){
         this.vendor_id = vendor_id;
-        this.name = name;
+        this.vendor_name = vendor_name;
         this.phone = phone;
         this.email = email;
-        this.zip_code = zip_code;
-        this.city = city;
+        this.zip_code_id = zip_code_id;
+        this.address = address;
     }
 
     public int getVendor_id() {
@@ -33,12 +33,12 @@ public class Vendor {
         this.vendor_id = vendor_id;
     }
 
-    public String getName() {
-        return name;
+    public String getVendor_name() {
+        return vendor_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVendor_name(String vendor_name) {
+        this.vendor_name = vendor_name;
     }
 
     public String getPhone() {
@@ -57,19 +57,19 @@ public class Vendor {
         this.email = email;
     }
 
-    public int getZip_code() {
-        return zip_code;
+    public String getAddress() {
+        return address;
     }
 
-    public void setZip_code(int zip_code) {
-        this.zip_code = zip_code;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCity() {
-        return city;
+    public int getZip_code_id() { return zip_code_id;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setZip_code_id(int zip_code_id) {
+        this.zip_code_id = zip_code_id;
     }
+
 }

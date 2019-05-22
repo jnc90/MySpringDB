@@ -1,6 +1,6 @@
 package com.example.demo.Service;
 
-import com.example.demo.Model.Person;
+import com.example.demo.Model.Vendor;
 import com.example.demo.Model.Zip_Code;
 import com.example.demo.Repository.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,18 @@ public class RestaurantService {
         return restaurantRepo.fetchAllCodes();
     }
 
+    public List<Vendor> fetchAll(){
+        return restaurantRepo.fetchAll();
+    }
+
+    public Vendor addVendor(Vendor vendor){
+        return restaurantRepo.addVendor(vendor);
+    }
+
+
+
+
+    /*
     public List<Person> fetchAll(){
         return restaurantRepo.fetchAll();
     }
@@ -36,4 +48,5 @@ public class RestaurantService {
     public Person updatePerson(int id, Person p){
         return restaurantRepo.updatePerson(id, p);
     }
+     */
 }

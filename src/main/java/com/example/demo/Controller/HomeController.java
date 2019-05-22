@@ -1,6 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Person;
+import com.example.demo.Model.Vendor;
 import com.example.demo.Model.Zip_Code;
 import com.example.demo.Service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+
+import static com.example.demo.Service.RestaurantService.*;
 
 //Controller styrer afviklingen af modellen (URL route, redirect og data indsamling)
 //View er HTML filer (HTML, CSS, JavaScript)
@@ -31,6 +33,17 @@ public class HomeController {
         return "home/index";
     }
 
+    @GetMapping("/vendors")
+    public String vendors(){
+        return "home/vendors";
+    }
+
+    @PostMapping("/vendors")
+    public String vendors(@ModelAttribute Vendor vendor){
+        restaurantService.addVendor(vendor);
+        return "redirect:/";
+    }
+
 
     @GetMapping("/create_new_order")
     public String create_new_order(){
@@ -45,11 +58,6 @@ public class HomeController {
     @GetMapping("/inventory")
     public String inventory(){
         return "home/inventory";
-    }
-
-    @GetMapping("/vendors")
-    public String vendors(){
-        return "home/vendors";
     }
 
     @GetMapping("/product")
