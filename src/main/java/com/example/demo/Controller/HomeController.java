@@ -48,7 +48,7 @@ public class HomeController {
     @PostMapping("/product")
     public String products(@ModelAttribute Product product){
         restaurantService.addProduct(product);
-        return "redirect:/";
+        return "home/product";
     }
 
 
