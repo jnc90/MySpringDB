@@ -22,8 +22,8 @@ public class RestaurantRepo {
         return template.query(sql, rowMapper);
     }
 
-    public List<Vendor> fetchAll(){
-        String sql = "SELECT * FROM vendors";
+    public List<Vendor> fetchVendor(){
+        String sql = "SELECT * FROM Vendors";
         RowMapper<Vendor> rowMapper = new BeanPropertyRowMapper<>(Vendor.class);
         return template.query(sql, rowMapper);
     }
@@ -32,6 +32,11 @@ public class RestaurantRepo {
         String sql = "INSERT INTO Vendors (vendor_name, phone, email, address, zip_code_id) " + "VALUES(?, ?, ?, ?, ?)";
         template.update(sql, vendor.getVendor_name(), vendor.getPhone(),vendor.getEmail(),vendor.getAddress(),vendor.getZip_code_id());
         return null;
+    }
+
+    public Boolean deleteVendor(int vendor_id){
+        String sql = "DELETE FROM Vendors WHERE vendor_id = ?";
+        return template.update(sql, vendor_id) > 0;
     }
 
     public List<Product> fetchProduct(){
@@ -47,7 +52,7 @@ public class RestaurantRepo {
     }
 
     public Boolean deleteProduct(int product_id){
-        String sql = "DELETE FROM Products WHERE product_id";
+        String sql = "DELETE FROM Products WHERE product_id = ?";
         return template.update(sql, product_id) > 0;
     }
 

@@ -31,13 +31,25 @@ public class HomeController {
 
     @GetMapping("/vendors")
     public String vendors(Model model){
+        List<Vendor> vendorList = restaurantService.fetchVendor();
+        model.addAttribute("Vendors", vendorList);
         return "home/vendors";
     }
 
     @PostMapping("/vendors")
     public String vendors(@ModelAttribute Vendor vendor){
         restaurantService.addVendor(vendor);
-        return "redirect:/";
+        return "redirect:/vendors";
+    }
+
+    @GetMapping("/deleteVendor/{vendor_id}")
+    public String deleteVendor(@PathVariable ("vendor_id") int vendor_id){
+        boolean deleted = restaurantService.deleteVendor(vendor_id);
+        if(deleted){
+            return "redirect:/vendors";
+        } else{
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/product")
@@ -50,10 +62,10 @@ public class HomeController {
     @PostMapping("/product")
     public String products(@ModelAttribute Product product){
         restaurantService.addProduct(product);
-        return "home/product";
+        return "redirect:/product";
     }
 
-    @GetMapping("/product/{product_id}")
+    @GetMapping("/deleteProduct/{product_id}")
     public String deleteProduct(@PathVariable ("product_id") int product_id){
         boolean deleted = restaurantService.deleteProduct(product_id);
         if(deleted){

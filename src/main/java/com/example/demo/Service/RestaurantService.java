@@ -18,12 +18,16 @@ public class RestaurantService {
         return restaurantRepo.fetchAllCodes();
     }
 
-    public List<Vendor> fetchAll(){
-        return restaurantRepo.fetchAll();
+    public List<Vendor> fetchVendor(){
+        return restaurantRepo.fetchVendor();
     }
 
     public Vendor addVendor(Vendor vendor){
         return restaurantRepo.addVendor(vendor);
+    }
+
+    public Boolean deleteVendor(int vendor_id){
+        return restaurantRepo.deleteVendor(vendor_id);
     }
 
     public List<Product> fetchProduct(){

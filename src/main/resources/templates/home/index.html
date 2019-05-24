@@ -4,11 +4,28 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="MyCss.css">
-</head>
-<body>
-    <h1>navigation bar</h1>
+<style>
 
-    <h1>This is my page</h1>
+
+
+</style>
+
+</head>
+
+<body>
+    <h1>Restaurant name</h1>
+
+    <div id="navibar1">
+        <a href="/">Home</a>
+        <a href="/vendors">Vendors</a>
+        <a href="/create_new_order">Orders</a>
+        <a href="/product">Products</a>
+        <a href="/inventory">Inventory</a>
+        <a href="/dishes">Dishes</a>
+        <a href="/balance">Balance</a>
+    </div>
+
+
     <nav>
         <ul class = "navibar">
             <li><a href="/">Home</a></li>
@@ -22,37 +39,34 @@
 
     </nav>
 
-
-    <a href="/create_new_order">
-        <button class ="btn-create_new_order btn" id="btn-create_new_order"> Create new order </button>
-    </a>
-
     <h1>Person list</h1>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Zip code</th>
-            <th>City</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr th:each="zip_code: ${zip_codes}">
-                <td th:text="${zip_code.zip_code_id}"/>
-                <td th:text="${zip_code.zip_code}"/>
-                <td th:text="${zip_code.city}"/>
-            </tr>
-        </tbody>
-    </table>
-
-    <form>
-        <select th:each="zip_code: ${zip_codes}">
-            <option th:each="zip_code: ${zip_codes}"/>
-            <option th:text="${zip_code.zip_code}"/>
-        </select>
-    </form>
 
 
 </body>
 </html>
+
+<!--
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Zip code</th>
+        <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="zip_code: ${zip_codes}">
+        <td th:text="${zip_code.zip_code_id}"/>
+        <td th:text="${zip_code.zip_code}"/>
+        <td th:text="${zip_code.city}"/>
+    </tr>
+    </tbody>
+</table>
+
+<form>
+    <select th:each="zip_code: ${zip_codes}">
+        <option th:each="zip_code: ${zip_codes}"/>
+        <option th:text="${zip_code.zip_code}"/>
+    </select>
+</form>
+-->
