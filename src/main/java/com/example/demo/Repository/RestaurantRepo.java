@@ -46,6 +46,11 @@ public class RestaurantRepo {
         return null;
     }
 
+    public Boolean deleteProduct(int product_id){
+        String sql = "DELETE FROM Products WHERE product_id";
+        return template.update(sql, product_id) > 0;
+    }
+
 
 
 

@@ -50,8 +50,19 @@ public class HomeController {
     @PostMapping("/product")
     public String products(@ModelAttribute Product product){
         restaurantService.addProduct(product);
-        return "redirect:/product";
+        return "home/product";
     }
+
+    @GetMapping("/product/{product_id}")
+    public String deleteProduct(@PathVariable ("product_id") int product_id){
+        boolean deleted = restaurantService.deleteProduct(product_id);
+        if(deleted){
+            return "redirect:/product";
+        } else{
+            return "redirect:/";
+        }
+    }
+
 
 
 

@@ -4,7 +4,7 @@ table{
 }
 
 #productTable{
-    margin-right: auto;
+    margin-right: 20px;
 }
 
 th{
@@ -43,7 +43,7 @@ a{
     background-color: green;
 }
 
-.btn-delete{
+#btn-deleteProduct{
     background-color: red;
 }
 

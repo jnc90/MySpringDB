@@ -34,6 +34,10 @@ public class RestaurantService {
         return restaurantRepo.addProduct(product);
     }
 
+    public Boolean deleteProduct(int product_id){
+        return restaurantRepo.deleteProduct(product_id);
+    }
+
 
 
 
