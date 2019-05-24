@@ -9,29 +9,29 @@
 <a href="/">
     <button class ="btn-index btn" id="btn-index"> Home </button>
 </a>
+
+
+
 <form action="/vendors" method="post">
     <label>Enter vendor name</label>
     <input type="text" name="vendor_name"/>
-    <label>Enter vendor name</label>
+    <label>Enter phone number</label>
     <input type="text" name="phone"/>
-    <label>Enter vendor name</label>
+    <label>Enter email</label>
     <input type="text" name="email"/>
-    <label>Enter vendor name</label>
+    <label>Enter address</label>
     <input type="text" name="address"/>
-    <label>Enter vendor name</label>
+    <label>Enter zip code</label>
     <input type="text" name="zip_code_id"/>
 
 
-    <input style="color: darkgreen" type="submit" value="create new vendor"/>
+    <input style="color: darkgreen" type="submit" value="Add new vendor"/>
 </form>
 
-// drop down
-<select>
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="opel">Opel</option>
-    <option value="audi">Audi</option>
-</select>
+<!--drop down-->
+<form>
+       <select class="form-control" id="firstList"  name="firstList"    onclick="getZip_code()">Audi</select>
+</form>
 
 </body>
 </html>

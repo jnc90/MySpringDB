@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Product;
 import com.example.demo.Model.Vendor;
 import com.example.demo.Model.Zip_Code;
 import com.example.demo.Service.RestaurantService;
@@ -10,10 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.List;
-
-import static com.example.demo.Service.RestaurantService.*;
 
 //Controller styrer afviklingen af modellen (URL route, redirect og data indsamling)
 //View er HTML filer (HTML, CSS, JavaScript)
@@ -24,8 +22,6 @@ public class HomeController {
     @Autowired
     RestaurantService restaurantService;
 
-
-
     @GetMapping("/")
     public String index(Model model){
         List<Zip_Code> zip_codesList = restaurantService.fetchAllCodes();
@@ -34,7 +30,7 @@ public class HomeController {
     }
 
     @GetMapping("/vendors")
-    public String vendors(){
+    public String vendors(Model model){
         return "home/vendors";
     }
 
@@ -43,6 +39,18 @@ public class HomeController {
         restaurantService.addVendor(vendor);
         return "redirect:/";
     }
+
+    @GetMapping("/product")
+    public String products(){
+        return "home/product";
+    }
+
+    @PostMapping("/product")
+    public String products(@ModelAttribute Product product){
+        restaurantService.addProduct(product);
+        return "redirect:/";
+    }
+
 
 
     @GetMapping("/create_new_order")
@@ -60,10 +68,7 @@ public class HomeController {
         return "home/inventory";
     }
 
-    @GetMapping("/product")
-    public String product(){
-        return "home/product";
-    }
+
 
      @GetMapping("/balance")
     public String balance(){

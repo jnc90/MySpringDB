@@ -10,67 +10,40 @@
 <a href="/">
     <button class ="btn-index btn" id="btn-index"> Home </button>
 </a>
-<h1> navbar </h1>
-<nav>
-    <ul class = "navibar">
-        <li><a href="/">Home</a></li>
-        <li><a href="/create_new_order">order</a></li>
-        <li><a href="/dishes">Dishes</a></li>
-        <li><a href="/inventory">inventory</a></li>
-        <li><a href="vendors">vendors</a></li>
-        <li><a href="/product">product</a></li>
-        <li><a href="balance">balance</a></li>
-    </ul>
-</nav>
+
+<h1>Product list</h1>
 
 <table>
     <thead>
     <tr>
         <th>Product name</th>
-        <th>kg/price</th>
-        <th>kg in storage</th>
+        <th>Price per kilo</th>
+        <th>Kilo in storage</th>
         <th></th>
-
     </tr>
     </thead>
+
     <tbody>
-    <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-    </tr>
+
     <tr>
         <td>
-            <form action="/create" method="post">
+            <form action="/product" method="post">
+
                 <label>Product name</label>
-                <input type="text" name="product name"/>
-            </form>
-        </td>
-        <td>
-            <form>
-                <label>Amount in stock (kg)</label>
-                <input type="text" name="last_name"/>
-            </form>
-        </td>
-        <td>
-            <form>
+                <input type="text" name="product_description"/>
+
                 <label>Price pr. kg</label>
-                <input type="text" name="price pr. kg"/>
+                <input type="text" name="product_price_per_kg"/>
+
+                <label>Amount in stock (kg)</label>
+                <input type="text" name="product_amount"/>
+
+                <input style="color: darkgreen" type="submit" value="create new product"/>
+
             </form>
         </td>
         <td>
-            <form>
-            <a href="/">
-                <button class="btn-viewOne btn" id="btn-viewOne">View one</button>
-            </a>
-            <a href="/">
-                <button class="btn-delete btn" id="btn-delete">Delete</button>
-            </a>
-            <a href="/">
-                <button class="btn-update btn" id="btn-update">Update</button>
-            </a>
-                </form>
+
         </td>
     </tr>
     </tbody>

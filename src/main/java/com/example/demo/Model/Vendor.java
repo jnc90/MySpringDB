@@ -16,7 +16,7 @@ public class Vendor {
     public Vendor(){
     }
 
-    public Vendor(int vendor_id, String vendor_name, String phone, String email, int zip_code, String address){
+    public Vendor(int vendor_id, String vendor_name, String phone, String email, int zip_code_id, String address){
         this.vendor_id = vendor_id;
         this.vendor_name = vendor_name;
         this.phone = phone;
@@ -71,5 +71,7 @@ public class Vendor {
     public void setZip_code_id(int zip_code_id) {
         this.zip_code_id = zip_code_id;
     }
+
+
 
 }

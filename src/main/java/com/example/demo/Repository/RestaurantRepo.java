@@ -1,5 +1,7 @@
 package com.example.demo.Repository;
 
+import com.example.demo.Model.Line_Order;
+import com.example.demo.Model.Product;
 import com.example.demo.Model.Vendor;
 import com.example.demo.Model.Zip_Code;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,18 @@ public class RestaurantRepo {
     public Vendor addVendor(Vendor vendor){
         String sql = "INSERT INTO Vendors (vendor_name, phone, email, address, zip_code_id) " + "VALUES(?, ?, ?, ?, ?)";
         template.update(sql, vendor.getVendor_name(), vendor.getPhone(),vendor.getEmail(),vendor.getAddress(),vendor.getZip_code_id());
+        return null;
+    }
+
+    public List<Product> fetchProduct(){
+        String sql = "SELECT * FROM Products";
+        RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public Product addProduct(Product product){
+        String sql = "INSERT INTO Products (product_description, product_price_per_kg, product_amount) " + "VALUES(?, ?, ?)";
+        template.update(sql, product.getProduct_description(), product.getProduct_price_per_kg(), product.getProduct_amount());
         return null;
     }
 

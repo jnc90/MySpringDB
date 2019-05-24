@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Product;
 import com.example.demo.Model.Vendor;
 import com.example.demo.Model.Zip_Code;
 import com.example.demo.Repository.RestaurantRepo;
@@ -23,6 +24,14 @@ public class RestaurantService {
 
     public Vendor addVendor(Vendor vendor){
         return restaurantRepo.addVendor(vendor);
+    }
+
+    public List<Product> fetchProduct(){
+        return restaurantRepo.fetchProduct();
+    }
+
+    public Product addProduct(Product product){
+        return restaurantRepo.addProduct(product);
     }
 
 

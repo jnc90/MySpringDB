@@ -12,12 +12,12 @@
     <nav>
         <ul class = "navibar">
             <li><a href="/">Home</a></li>
-            <li><a href="/create_new_order">order</a></li>
+            <li><a href="/create_new_order">Order</a></li>
             <li><a href="/dishes">Dishes</a></li>
-            <li><a href="/inventory">inventory</a></li>
-            <li><a href="vendors">vendors</a></li>
-            <li><a href="/product">product</a></li>
-            <li><a href="balance">balance</a></li>
+            <li><a href="/inventory">Inventory</a></li>
+            <li><a href="/vendors">Vendors</a></li>
+            <li><a href="/product">Product</a></li>
+            <li><a href="/balance">Balance</a></li>
         </ul>
 
     </nav>
@@ -34,8 +34,8 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>First name</th>
-            <th>Last name</th>
+            <th>Zip code</th>
+            <th>City</th>
             <th></th>
         </tr>
         </thead>
@@ -50,6 +50,14 @@
             </tr>
         </tbody>
     </table>
+
+    <form>
+        <select th:each="zip_code: ${zip_codes}">
+            <option th:each="zip_code: ${zip_codes}"/>
+            <option th:text="${zip_code.zip_code}"/>
+        </select>
+    </form>
+
 
 </body>
 </html>
