@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>product</title>
@@ -14,15 +14,6 @@
 <h1>Product list</h1>
 
 <table>
-    <thead>
-    <tr>
-        <th>Product name</th>
-        <th>Price per kilo</th>
-        <th>Kilo in storage</th>
-        <th></th>
-    </tr>
-    </thead>
-
     <tbody>
 
     <tr>
@@ -30,21 +21,43 @@
             <form action="/product" method="post">
 
                 <label>Product name</label>
-                <input type="text" name="product_description"/>
+                <input type="text" name="product_description"/><br>
 
                 <label>Price pr. kg</label>
-                <input type="text" name="product_price_per_kg"/>
+                <input type="text" name="product_price_per_kg"/><br>
 
                 <label>Amount in stock (kg)</label>
-                <input type="text" name="product_amount"/>
+                <input type="text" name="product_amount"/><br>
 
                 <input style="color: darkgreen" type="submit" value="create new product"/>
 
             </form>
         </td>
-        <td>
+    </tr>
+    </tbody>
+</table>
 
-        </td>
+<br>
+
+<table>
+    <thead id="productTable">
+    <tr>
+        <th>Id</th>
+        <th>Product name</th>
+        <th>Price per kilo</th>
+        <th>Amount in stock (kg)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="product: ${Products}">
+        <td th:text="${product.product_id}"/>
+        <td th:text="${product.product_description}"/>
+        <td th:text="${product.product_price_per_kg}"/>
+        <td th:text="${product.product_amount}"/>
+
+
+
     </tr>
     </tbody>
 </table>

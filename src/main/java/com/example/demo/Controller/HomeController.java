@@ -41,14 +41,16 @@ public class HomeController {
     }
 
     @GetMapping("/product")
-    public String products(){
+    public String products(Model model){
+        List<Product> productList = restaurantService.fetchProduct();
+        model.addAttribute("Products", productList);
         return "home/product";
     }
 
     @PostMapping("/product")
     public String products(@ModelAttribute Product product){
         restaurantService.addProduct(product);
-        return "redirect:/";
+        return "home/product";
     }
 
 

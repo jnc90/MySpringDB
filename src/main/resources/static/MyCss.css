@@ -2,6 +2,11 @@ table{
     border-collapse: collapse;
     width: 40%;
 }
+
+#productTable{
+    margin-right: auto;
+}
+
 th{
     background-color: greenyellow;
 }
