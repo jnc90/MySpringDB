@@ -22,13 +22,10 @@
         <th></th>
     </tr>
     </thead>
-
     <tbody>
-
     <tr>
         <td>
             <form action="/product" method="post">
-
                 <label>Product name</label>
                 <input type="text" name="product_description"/> <br>
 
@@ -39,15 +36,38 @@
                 <input type="text" name="product_amount"/>
 
                 <input style="color: darkgreen" type="submit" value="create new product"/>
-
             </form>
         </td>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+
+<h1>Person list</h1>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Product name</th>
+        <th>price pr kg</th>
+        <th>product amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr each="product: ${product}">
+        <td text="${product.product_id}"/>
+        <td text="${product.product_description}"/>
+        <td text="${product.product_price_per_kg}"/>
+        <td text="${product.product_amount}"/>
         <td>
 
         </td>
     </tr>
     </tbody>
 </table>
-
-</body>
-</html>
