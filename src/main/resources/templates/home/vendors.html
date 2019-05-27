@@ -7,10 +7,20 @@
 </head>
 <body>
 
-<a href="/">
-    <button class ="btn-index btn" id="btn-index"> Home </button>
-</a>
-
+<h1 id="restaurantName">Ca la mercè’t</h1>
+<div>
+    <nav id="nav">
+        <ul>
+            <li> <a href="/" id="linkref">Home</a></li>
+            <li> <a href="/vendors" id="linkref">Vendors</a></li>
+            <li> <a href="/create_new_order" id="linkref">Orders</a></li>
+            <li> <a href="/product" id="linkref">Products</a></li>
+            <li> <a href="/inventory" id="linkref">Inventory</a></li>
+            <li> <a href="/dishes" id="linkref">Dishes</a></li>
+            <li> <a href="/balance" id="linkref">Balance</a></li>
+        </ul>
+    </nav>
+</div>
 <h1>Add vendor</h1>
 
 <table>
@@ -28,10 +38,7 @@
                 <input type="text" name="address"/> <br>
                 <label>Enter zip code</label>
                 <input type="text" name="zip_code_id"/> <br>
-
-
                 <input style="color: darkgreen" type="submit" value="Add new vendor"/>
-
             </form>
         </td>
     </tr>

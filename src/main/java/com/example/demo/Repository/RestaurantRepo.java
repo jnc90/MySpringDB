@@ -15,19 +15,19 @@ import java.util.List;
 public class RestaurantRepo {
     @Autowired
     JdbcTemplate template;
-
+// this is a method for listing zip codes
     public List<Zip_Code> fetchAllCodes(){
         String sql = "SELECT * FROM Zip_Codes";
         RowMapper<Zip_Code> rowMapper = new BeanPropertyRowMapper<>(Zip_Code.class);
         return template.query(sql, rowMapper);
     }
-
+// this is a method called fetchVendor for listing vendors.
     public List<Vendor> fetchVendor(){
         String sql = "SELECT * FROM Vendors";
         RowMapper<Vendor> rowMapper = new BeanPropertyRowMapper<>(Vendor.class);
         return template.query(sql, rowMapper);
     }
-
+// this is a method for creating and adding a new vendor to the list of vendors
     public Vendor addVendor(Vendor vendor){
         String sql = "INSERT INTO Vendors (vendor_name, phone, email, address, zip_code_id) " + "VALUES(?, ?, ?, ?, ?)";
         template.update(sql, vendor.getVendor_name(), vendor.getPhone(),vendor.getEmail(),vendor.getAddress(),vendor.getZip_code_id());

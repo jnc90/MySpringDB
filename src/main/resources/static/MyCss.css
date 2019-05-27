@@ -19,6 +19,25 @@ body{
     margin-top: 65px;
 }
 
+#navibar1 li{
+    display: inline-block;
+    list-style: none;
+}
+#nav{
+    background-color: rgba(0,0,0,0.7);
+}
+#nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+#nav li{
+    display: inline-block;
+    padding: 20px;
+
+}
+
 #linkref{
     text-decoration: none;
     padding: 15px;
