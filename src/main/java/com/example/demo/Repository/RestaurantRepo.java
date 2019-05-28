@@ -39,6 +39,17 @@ public class RestaurantRepo {
         return template.update(sql, vendor_id) > 0;
     }
 
+    public Product fetchProduktById(int productId){
+        String sql = "SELECT * FROM Products WHERE id = ?";
+        RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
+        List<Product> productList = template.query(sql, rowMapper,productId);
+        if(productList == null)
+            return null;
+        if(productList.size()==0)
+            return null;
+        return productList.get(0);
+    }
+
     public List<Product> fetchProduct(){
         String sql = "SELECT * FROM Products";
         RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);

@@ -75,9 +75,6 @@ public class HomeController {
         }
     }
 
-
-
-
     @GetMapping("/create_new_order")
     public String create_new_order(){
         return "home/create_new_order";
