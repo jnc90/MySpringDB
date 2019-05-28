@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
+
 import java.util.List;
 
 //Controller styrer afviklingen af modellen (URL route, redirect og data indsamling)
@@ -62,6 +64,7 @@ public class HomeController {
     @PostMapping("/product")
     public String products(@ModelAttribute Product product){
         restaurantService.addProduct(product);
+  //      restaurantService.fetchProductName(product_desrciption);
         return "redirect:/product";
     }
 
@@ -74,6 +77,20 @@ public class HomeController {
             return "redirect:/";
         }
     }
+
+    @GetMapping("/fetchProductName/product_description")
+    public String fetchProductName(@PathVariable("product_description") String product_description){
+    Product productByName = restaurantService.fetchProductName(product_description);
+    return "redirect:/product";
+    }
+
+    @PostMapping("/productSearch")
+    public String productSearchName(WebRequest wr) {
+        String temp = wr.getParameter("product_name");
+        restaurantService.fetchProductName(temp);
+        return "redirect:home/product";
+    }
+
 
     @GetMapping("/create_new_order")
     public String create_new_order(){

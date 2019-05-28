@@ -42,6 +42,9 @@ public class RestaurantService {
         return restaurantRepo.deleteProduct(product_id);
     }
 
+    public Product fetchProductName(String product_description)
+    {return  restaurantRepo.fetchProductName(product_description);
+    }
 
 
 

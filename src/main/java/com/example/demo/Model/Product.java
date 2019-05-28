@@ -50,4 +50,7 @@ public class Product {
     public void setProduct_amount(int product_amount) {
         this.product_amount = product_amount;
     }
+
+
 }
+

@@ -41,6 +41,8 @@
                 <label>Amount in stock (kg)</label>
                 <input type="text" name="product_amount"/><br>
 
+
+
                 <input style="color: darkgreen" type="submit" value="Create new product"/>
 
             </form>
@@ -51,6 +53,53 @@
 
 <h1>Product list</h1>
 
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Product name</th>
+        <th>Price per kilo</th>
+        <th>Amount in stock (kg)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="product: ${Products}">
+        <td th:text="${product.product_id}"/>
+        <td th:text="${product.product_description}"/>
+        <td th:text="${product.product_price_per_kg}"/>
+        <td th:text="${product.product_amount}"/>
+        <td>
+            <a th:href="@{'/deleteProduct/'+${product.product_id}}">
+                <button class="btn-deleteProduct btn" id="btn-deleteProduct">Delete</button>
+            </a>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+
+<h1>search</h1>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <form action="/productSearch" method="post">
+
+                <label>Search</label>
+                <input type="text" name="product_name"/><br>
+
+
+                <input style="color: darkgreen" type="submit" value="Search"/>
+
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h1>Search result</h1>
 <table>
     <thead>
     <tr>

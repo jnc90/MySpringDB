@@ -42,13 +42,33 @@ public class RestaurantRepo {
     public Product fetchProduktById(int productId){
         String sql = "SELECT * FROM Products WHERE id = ?";
         RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
-        List<Product> productList = template.query(sql, rowMapper,productId);
+        List<Product> productList = template.query(sql, rowMapper, productId);
+        // dos the list exist?
         if(productList == null)
             return null;
+        // Is the list empty?
         if(productList.size()==0)
             return null;
+        //Now we have a list with one row. We return this row.
         return productList.get(0);
     }
+
+
+    public Product fetchProductName(String productName){
+        String sql = "SELECT * FROM Products WHERE product_description = ?";
+        RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
+        //List<Product> productList = template.query(sql, rowMapper, productName);
+        List<Product> productList = template.query(sql, rowMapper, productName);
+        // dos the list exist?
+        if(productList == null)
+            return null;
+        // Is the list empty?
+        if(productList.size()==0)
+            return null;
+        //Now we have a list with one row. We return this row.
+        return productList.get(0);
+    }
+
 
     public List<Product> fetchProduct(){
         String sql = "SELECT * FROM Products";
