@@ -76,9 +76,15 @@ public class RestaurantRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Product addProduct(Product product){
-        String sql = "INSERT INTO Products (product_description, product_price_per_kg, product_amount) " + "VALUES(?, ?, ?)";
-        template.update(sql, product.getProduct_description(), product.getProduct_price_per_kg(), product.getProduct_amount());
+    public Product addProduct(Product newProduct){
+        Product candidateProduct = fetchProductName(newProduct.getProduct_description());
+        if (candidateProduct == null){
+            String sql = "INSERT INTO Products (product_description, product_price_per_kg, product_amount) " + "VALUES(?, ?, ?)";
+            template.update(sql, newProduct.getProduct_description(), newProduct.getProduct_price_per_kg(), newProduct.getProduct_amount());
+            return null;
+        }
+        String sql = "UPDATE Products SET product_amount = product_amount + ? WHERE product_description = ?";
+        template.update(sql, newProduct.getProduct_amount(),candidateProduct.getProduct_description());
         return null;
     }
 
