@@ -22,14 +22,33 @@
     </nav>
 </div>
 <h1>Orders</h1>
-<tbody>
-    <td>
-        <a>
-            <button class="btn-viewOne btn" id="btn-viewOne">View one</button>
-        </a>
-    </td>
-</tr>
-</tbody>
+
+
+<h1>Add product</h1>
+
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <form action="/product" method="post">
+
+                <label>Product name</label>
+                <input type="text" name="product_description"/><br>
+
+                <label>Price pr. kg</label>
+                <input type="text" name="product_price_per_kg"/><br>
+
+                <label>Amount in stock (kg)</label>
+                <input type="text" name="product_amount"/><br>
+
+                <input style="color: darkgreen" type="submit" value="Create new product"/>
+
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 
 
 </body>

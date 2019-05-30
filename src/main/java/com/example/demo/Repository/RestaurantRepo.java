@@ -27,18 +27,18 @@ public class RestaurantRepo {
         RowMapper<Vendor> rowMapper = new BeanPropertyRowMapper<>(Vendor.class);
         return template.query(sql, rowMapper);
     }
-// this is a method for creating and adding a new vendor to the list of vendors
+// this is a method for creating and adding a new vendor to the table of vendors
     public Vendor addVendor(Vendor vendor){
         String sql = "INSERT INTO Vendors (vendor_name, phone, email, address, zip_code_id) " + "VALUES(?, ?, ?, ?, ?)";
         template.update(sql, vendor.getVendor_name(), vendor.getPhone(),vendor.getEmail(),vendor.getAddress(),vendor.getZip_code_id());
         return null;
     }
-
+// this is a method for deleting a vendor from
     public Boolean deleteVendor(int vendor_id){
         String sql = "DELETE FROM Vendors WHERE vendor_id = ?";
         return template.update(sql, vendor_id) > 0;
     }
-
+// this method is never used. It returns a object from the Product table by ID
     public Product fetchProduktById(int productId){
         String sql = "SELECT * FROM Products WHERE id = ?";
         RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
@@ -53,11 +53,10 @@ public class RestaurantRepo {
         return productList.get(0);
     }
 
-
+// this method takes a product name and returns an object from the Products table by the given name
     public Product fetchProductName(String productName){
         String sql = "SELECT * FROM Products WHERE product_description = ?";
         RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
-        //List<Product> productList = template.query(sql, rowMapper, productName);
         List<Product> productList = template.query(sql, rowMapper, productName);
         // dos the list exist?
         if(productList == null)
@@ -69,13 +68,13 @@ public class RestaurantRepo {
         return productList.get(0);
     }
 
-
+// this method lists the objects in Products table
     public List<Product> fetchProduct(){
         String sql = "SELECT * FROM Products";
         RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
         return template.query(sql, rowMapper);
     }
-
+// this method adds a new product to the Proudcts table. The
     public Product addProduct(Product newProduct){
         Product candidateProduct = fetchProductName(newProduct.getProduct_description());
         if (candidateProduct == null){
@@ -87,7 +86,7 @@ public class RestaurantRepo {
         template.update(sql, newProduct.getProduct_amount(),candidateProduct.getProduct_description());
         return null;
     }
-
+// this method deletes a product from the Products table. This is done by matching an ID
     public Boolean deleteProduct(int product_id){
         String sql = "DELETE FROM Products WHERE product_id = ?";
         return template.update(sql, product_id) > 0;
