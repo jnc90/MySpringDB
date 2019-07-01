@@ -85,9 +85,6 @@ a{
     text-decoration: none;
 }
 
-
-
-
 .btn{
     border: black;
     color: black;
@@ -98,7 +95,6 @@ a{
 .btn:hover{
     box-shadow: 2px 2px 2px #888888;
 }
-
 .btn-create_new_order{
     background-color: rgb(55,55,55);
 }
@@ -106,10 +102,3 @@ a{
 #btn-deleteProduct{
     background-color: red;
 }
-
-
-
-
-
-
-

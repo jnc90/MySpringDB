@@ -1,8 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Product;
-import com.example.demo.Model.Vendor;
-import com.example.demo.Model.Zip_Code;
+import com.example.demo.Model.*;
 import com.example.demo.Service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,7 +62,6 @@ public class HomeController {
     @PostMapping("/product")
     public String products(@ModelAttribute Product product){
         restaurantService.addProduct(product);
-  //      restaurantService.fetchProductName(product_desrciption);
         return "redirect:/product";
     }
 
@@ -91,11 +88,44 @@ public class HomeController {
         return "redirect:home/product";
     }
 
-
     @GetMapping("/create_new_order")
-    public String create_new_order(){
+    public String orders(Model model){
+        List<Order> orderList = restaurantService.fetchOrder();
+        model.addAttribute("Orders", orderList);
+
+        // line_order ligger under order
+        List<Line_Order> line_orderList = restaurantService.fetchLine_Order();
+        model.addAttribute("Line_Orders", line_orderList);
+
+
         return "home/create_new_order";
     }
+
+    @PostMapping("/create_new_order")
+    public String create_new_order(@ModelAttribute Order order) {
+        restaurantService.addOrder(order);
+
+        return "redirect:/create_new_order";
+    }
+
+
+
+
+
+
+    // not used?
+    @GetMapping("/new_line_order")
+    public String line_orders(Model model) {
+        List<Line_Order> line_orderList = restaurantService.fetchLine_Order();
+        model.addAttribute("Line_Orders", line_orderList);
+        return "home/create_new_order";
+    }
+    @PostMapping("/new_line_order")
+    public String new_line_order (@ModelAttribute Line_Order line_order) {
+    restaurantService.addLine_Order(line_order);
+        return "redirect:/create_new_order";
+    }
+
 
     @GetMapping("/dishes")
     public String dishes(){
@@ -108,50 +138,9 @@ public class HomeController {
     }
 
 
-
      @GetMapping("/balance")
     public String balance(){
         return "home/balance";
     }
 
-/* gammelt start
-    @GetMapping("/create")
-    public String create(){
-        return "home/create";
-    }
-
-    @PostMapping("/create")
-    public String create(@ModelAttribute Person person){
-        personService.addPerson(person);
-        return "redirect:/";
-    }
-
-    @GetMapping("/viewOne/{id}")
-    public String viewOne(@PathVariable("id") int id, Model model){
-        model.addAttribute("person", personService.findPersonById(id));
-        return "home/viewOne";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") int id){
-        boolean deleted = personService.deletePerson(id);
-        if(deleted){
-            return "redirect:/";
-        } else{
-            return "redirect:/";
-        }
-    }
-
-    @GetMapping("/update/{id}")
-    public String update(@PathVariable("id") int id, Model model){
-        model.addAttribute("person", personService.findPersonById(id));
-        return "home/update";
-    }
-
-    @PostMapping("/update")
-    public String update(@ModelAttribute Person person){
-        personService.updatePerson(person.getId(), person);
-        return "redirect:/";
-    }
-    gammelt slut */
 }

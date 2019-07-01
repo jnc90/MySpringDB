@@ -21,28 +21,26 @@
         </ul>
     </nav>
 </div>
-<h1>Orders</h1>
 
 
-<h1>Add product</h1>
+<h1>Add new Line_Order</h1>
 
 <table>
     <tbody>
     <tr>
         <td>
-            <form action="/product" method="post">
+            <!-- <form action="/new_line_order" method="post">        create_new_order    -->
+            <form action="/new_line_order" method="post">
+                <label>order_id</label>
+                <input type="text" name="order_id"/><br>
+                <label>product_id</label>
+                <input type="text" name="product_id"/><br>
+                <label>line_price</label>
+                <input type="text" name="line_price"/><br>
+                <label>line_amount</label>
+                <input type="text" name="line_amount"/><br>
 
-                <label>Product name</label>
-                <input type="text" name="product_description"/><br>
-
-                <label>Price pr. kg</label>
-                <input type="text" name="product_price_per_kg"/><br>
-
-                <label>Amount in stock (kg)</label>
-                <input type="text" name="product_amount"/><br>
-
-                <input style="color: darkgreen" type="submit" value="Create new product"/>
-
+                <input style="color: darkgreen" type="submit" value="Create new line_order"/>
             </form>
         </td>
     </tr>
@@ -50,6 +48,72 @@
 </table>
 
 
+
+<h1>List of all Line_Orders</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>line_order_id</th>
+        <th>order_id</th>
+        <th>product_id</th>
+        <th>line_price</th>
+        <th>line_amount</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="line_order: ${Line_Orders}">
+        <td th:text="${line_order.line_id}"/>
+        <td th:text="${line_order.order_id}"/>
+        <td th:text="${line_order.product_id}"/>
+        <td th:text="${line_order.line_price}"/>
+        <td th:text="${line_order.line_amount}"/>
+    </tr>
+    </tbody>
+</table>
+
+<h1>Orders</h1>
+
+
+<h1>Create new order</h1>
+
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <form action="/create_new_order" method="post">
+                <label>total_price</label>
+                <input type="text" name="total_price"/><br>
+                <label>vendor_id</label>
+                <input type="text" name="vendor_id"/><br>
+                <input style="color: darkgreen" type="submit" value="Create new order"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h1>List of orders</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>total_price</th>
+        <th>vendor_id</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="order: ${Orders}">
+        <td th:text="${order.order_id}"/>
+        <td th:text="${order.total_price}"/>
+        <td th:text="${order.vendor_id}"/>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

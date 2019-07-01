@@ -1,8 +1,6 @@
 package com.example.demo.Service;
 
-import com.example.demo.Model.Product;
-import com.example.demo.Model.Vendor;
-import com.example.demo.Model.Zip_Code;
+import com.example.demo.Model.*;
 import com.example.demo.Repository.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,10 +28,6 @@ public class RestaurantService {
         return restaurantRepo.deleteVendor(vendor_id);
     }
 
-    public List<Product> fetchProduct(){
-        return restaurantRepo.fetchProduct();
-    }
-
     public Product addProduct(Product product){
         return restaurantRepo.addProduct(product);
     }
@@ -42,10 +36,31 @@ public class RestaurantService {
         return restaurantRepo.deleteProduct(product_id);
     }
 
-    public Product fetchProductName(String product_description)
-    {return  restaurantRepo.fetchProductName(product_description);
+    public List<Product> fetchProduct(){
+        return restaurantRepo.fetchProduct();
     }
 
+    public Product fetchProductName(String product_description) {
+        return  restaurantRepo.fetchProductName(product_description);
+    }
+
+    public List<Order> fetchOrder(){
+        return restaurantRepo.fetchOrder();
+    }
+
+    public Order addOrder(Order order){
+        return restaurantRepo.addOrder(order);
+    }
+
+    public List<Line_Order> fetchLine_Order(){
+        return restaurantRepo.fetchLine_Order();
+    }
+
+   // public List<Line_Order> fetchCurrent_Line_Order(int order_id){return restaurantRepo.fetchCurrent_Line_Order(order_id);}
+
+    public Line_Order addLine_Order(Line_Order line_order){
+        return restaurantRepo.addLine_Order(line_order);
+    }
 
 
     /*
