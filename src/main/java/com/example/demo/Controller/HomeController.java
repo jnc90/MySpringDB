@@ -93,9 +93,16 @@ public class HomeController {
         List<Order> orderList = restaurantService.fetchOrder();
         model.addAttribute("Orders", orderList);
 
+        //
+        List<Order> New_orderList = restaurantService.fetchNewestOrder();
+        model.addAttribute("New_Order", New_orderList);
+
         // line_order ligger under order
         List<Line_Order> line_orderList = restaurantService.fetchLine_Order();
         model.addAttribute("Line_Orders", line_orderList);
+
+        List<Line_Order> new_line_order_list = restaurantService.fetch_new_line_orders();
+        model.addAttribute("New_Line_Orders", new_line_order_list);
 
 
         return "home/create_new_order";
@@ -115,11 +122,12 @@ public class HomeController {
 
     // not used?
     @GetMapping("/new_line_order")
-    public String line_orders(Model model) {
-        List<Line_Order> line_orderList = restaurantService.fetchLine_Order();
-        model.addAttribute("Line_Orders", line_orderList);
+    public String new_line_orders(Model model){
+        List<Line_Order> new_line_order_list = restaurantService.fetch_new_line_orders();
+        model.addAttribute("Line_Orders", new_line_order_list);
         return "home/create_new_order";
     }
+
     @PostMapping("/new_line_order")
     public String new_line_order (@ModelAttribute Line_Order line_order) {
     restaurantService.addLine_Order(line_order);

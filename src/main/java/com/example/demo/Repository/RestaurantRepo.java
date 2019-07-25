@@ -98,14 +98,26 @@ public class RestaurantRepo {
         return template.query(sql, rowMapper);
     }
 
+    // this is a method for finding the newest order
+    public List<Order> fetchNewestOrder() {
+        String sql = "SELECT * FROM orders ORDER BY order_id DESC LIMIT 1";
+        RowMapper<Order> rowMapper = new BeanPropertyRowMapper<>(Order.class);
+        return template.query(sql, rowMapper);
+    }
+    // this is a method for finding the newest order
+    public List<Order> fetchNewestOrder_id() {
+        String sql = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
+        RowMapper<Order> rowMapper = new BeanPropertyRowMapper<>(Order.class);
+        return template.query(sql, rowMapper);
+    }
+
     // add Order
     public Order addOrder(Order order){
-        // in the java part of the system we have the attribute "order_date"
-        // in the database it is called "order_timestamp"
         String sql = "INSERT INTO Orders (total_price, vendor_id) " + "VALUES(?, ?)";
         template.update(sql, order.getTotal_price(), order.getVendor_id());
         return null;
     }
+
 
     // this is a method for listing line_orders
     public List<Line_Order> fetchLine_Order() {
@@ -114,17 +126,23 @@ public class RestaurantRepo {
         return template.query(sql, rowMapper);
     }
 
-    // this is a method for listing line_orders for the current order
-    /*
-    public List<Line_Order> fetchCurrent_Line_Order(int order_id) {
-       // SELECT * FROM permlog ORDER BY id DESC LIMIT 0, 1
-        String sql = "SELECT * FROM line_orders ORDER BY order_id DESC LIMIT 0,1";
-        RowMapper<Line_Order> rowMapper = new BeanPropertyRowMapper<>(Line_Order.class);
-        return template.query(sql, rowMapper);
-    }
-*/
 
-    // this is a method for creating and adding a new Line_Order to the table of line_orders.
+    // this is a method for listing line_orders for the current order
+    public List<Line_Order> fetch_new_line_orders() {
+        // finding the Newest order
+        int my_id = fetchNewestOrder_id().get(0).getOrder_id();
+        // finding the highest order_id
+        String newest_line_orders = "SELECT * FROM line_orders WHERE order_id = ?";
+        RowMapper<Line_Order> rowMapper = new BeanPropertyRowMapper<>(Line_Order.class);
+        return template.query(newest_line_orders, rowMapper,my_id);
+    }
+
+
+
+
+
+
+        // this is a method for creating and adding a new Line_Order to the table of line_orders.
     public Line_Order addLine_Order(Line_Order line_order){
         String sql = "INSERT INTO Line_Orders (order_id, product_id, line_price, line_amount) " + "VALUES(?, ?, ?, ?)";
         template.update(sql, line_order.getOrder_id(), line_order.getProduct_id(),line_order.getLine_price(),line_order.getLine_amount());

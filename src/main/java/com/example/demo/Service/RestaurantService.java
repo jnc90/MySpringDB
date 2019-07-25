@@ -48,6 +48,11 @@ public class RestaurantService {
         return restaurantRepo.fetchOrder();
     }
 
+    public List<Order> fetchNewestOrder(){
+        return restaurantRepo.fetchNewestOrder();
+    }
+
+
     public Order addOrder(Order order){
         return restaurantRepo.addOrder(order);
     }
@@ -56,7 +61,7 @@ public class RestaurantService {
         return restaurantRepo.fetchLine_Order();
     }
 
-   // public List<Line_Order> fetchCurrent_Line_Order(int order_id){return restaurantRepo.fetchCurrent_Line_Order(order_id);}
+    public List<Line_Order> fetch_new_line_orders(){return restaurantRepo.fetch_new_line_orders();}
 
     public Line_Order addLine_Order(Line_Order line_order){
         return restaurantRepo.addLine_Order(line_order);
