@@ -99,6 +99,9 @@ a{
     background-color: rgb(55,55,55);
 }
 
+#btn-delete{
+    background-color: red;
+}
 #btn-deleteProduct{
     background-color: red;
 }

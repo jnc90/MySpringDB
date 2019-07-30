@@ -93,7 +93,7 @@ public class HomeController {
         List<Order> orderList = restaurantService.fetchOrder();
         model.addAttribute("Orders", orderList);
 
-        //
+        //Finds the newest order
         List<Order> New_orderList = restaurantService.fetchNewestOrder();
         model.addAttribute("New_Order", New_orderList);
 
@@ -114,11 +114,6 @@ public class HomeController {
 
         return "redirect:/create_new_order";
     }
-
-
-
-
-
 
     // not used?
     @GetMapping("/new_line_order")

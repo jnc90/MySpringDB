@@ -132,11 +132,21 @@ public class RestaurantRepo {
         // finding the Newest order
         int my_id = fetchNewestOrder_id().get(0).getOrder_id();
         // finding the highest order_id
-        String newest_line_orders = "SELECT * FROM line_orders WHERE order_id = ?";
+//old ->        String newest_line_orders = "SELECT * FROM line_orders WHERE order_id = ?";
+
+
+
+
+
+        String newest_line_orders ="SELECT line_orders.`line_id` , line_orders.`line_price`, line_orders.`line_amount`, line_orders.`order_id`, products.`product_description`\n" +
+                "FROM line_orders, products\n" +
+                "WHERE products.`product_id` = line_orders.`product_id` AND  line_orders.order_id = ?";
         RowMapper<Line_Order> rowMapper = new BeanPropertyRowMapper<>(Line_Order.class);
         return template.query(newest_line_orders, rowMapper,my_id);
     }
-
+//SELECT line_orders.`line_id` , line_orders.`line_price`, line_orders.`line_amount`, line_orders.`order_id`, products.`product_description`
+//FROM line_orders, products
+//WHERE products.`product_id` = line_orders.`product_id`;
 
 
 
